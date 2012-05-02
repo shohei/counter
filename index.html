@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<meta charset="UTF-8">
+<head>
+<title>counter</title>
+<script language="JavaScript"><!--
+var timerID;//ﾀｲﾏｰ変数
+var t = 0;//秒数を格納するｸﾞﾛｰﾊﾞﾙ変数
+  function TimeStart(){
+    //document.forms[0].elements[2].value = t++;
+    var suuji = (t++).toString();
+    var mojiretsu = "<font size = 15>".concat(suuji);
+    mojiretsu = mojiretsu.concat("</font>");
+    document.getElementById("hoge").innerHTML = mojiretsu; 
+    //value値にtを代入した後で1増加(後置きｲﾝｸﾘﾒﾝﾄ)
+  }
+  function TimeStop(){
+  clearInterval(timerID);//setIntervalを停止する
+  t = 0;//ｸﾞﾙｰﾊﾞﾙ変数を 0 に初期化
+  }
+  window.onload = function() {
+  timerID=setInterval('TimeStart()',1000);
+}
+//--></script>
+<link rel="stylesheet" type="text/css" href="./bootstrap.css" />
+
+</head>
+<body>
+<center>
+<br />
+<br />
+<h1>すばらしいカウンタ</h1>
+<br />
+<br />
+<form>
+
+ <input type="button" class="btn-primary btn-large" value="もう一度" onClick="timerID=setInterval('TimeStart()',1000);">
+ <input type="button" class = "btn-danger btn-large" value="停止" onClick="TimeStop();">
+ <p align="center" style="color:navy;font:20 bold">
+  <!--  現在 <input style="color:red" type="button" value="0">秒経過しました。
+    </p> --> </form>
+<br />
+<div id="hoge"></div>
+</center>
+</body>
+</html>
